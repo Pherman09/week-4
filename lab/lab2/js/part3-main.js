@@ -2,6 +2,8 @@
    You should NOT need to change this file (though you are not forbidden from doing so)
 ===================== */
 
+//applicaiton only needs to work with one or two inputs
+
 /* =====================
   Call getAndParseData to grab our dataset through a jQuery.ajax call ($.ajax)
 ===================== */

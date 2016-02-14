@@ -30,10 +30,28 @@
        var one = justOne();
 ===================== */
 
-var downloadData = $.ajax("");
-var parseData = function() {};
-var makeMarkers = function() {};
-var plotMarkers = function() {};
+var downloadData = $.ajax("https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-bike-crashes-snippet.json").done(function(response){
+  return response;
+});
+var parseData = function(text) {
+  return JSON.parse(text);
+};
+
+var makeMarkers = function(objects) {
+  listofmarkers = [];
+  _.each (objects, function(ob){
+    var lat = ob["LAT"];
+    var lng = ob["LNG"];
+    listofmarkers.push(L.marker([lat, lng]));
+  });
+  return listofmarkers;
+};
+
+var plotMarkers = function(markerlist) {
+  _.each(markerlist, function(mark){
+    mark.addTo(map);
+  });
+};
 
 
 /* =====================
@@ -49,7 +67,11 @@ var plotMarkers = function() {};
   user's input.
 ===================== */
 
-var removeMarkers = function() {};
+var removeMarkers = function(markerlist) {
+  _.each(markerlist, function(mark){
+    map.removeLayer(mark);
+  });
+};
 
 /* =====================
   Optional, stretch goal
@@ -58,12 +80,22 @@ var removeMarkers = function() {};
 
   Note: You can add or remove from the code at the bottom of this file.
 ===================== */
+//Unclear to me why this didn't work!
+
+var filtermarkers = function (objects) {
+  _.filter(objects,function(ob){
+    return ob["ILLUMINATI"] == 1;
+  });
+};
+
 /* =====================
  CODE EXECUTED DOWN HERE!
 ===================== */
 
 downloadData.done(function(data) {
   var parsed = parseData(data);
+  //var filtered = filtermarkers(parsed);
+  //var markers = makeMarkers(filtered);
   var markers = makeMarkers(parsed);
   plotMarkers(markers);
   removeMarkers(markers);

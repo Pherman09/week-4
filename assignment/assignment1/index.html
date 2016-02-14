@@ -44,11 +44,39 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
-      <!-- =====================
-      Add HTML!
-      ====================== -->
-
+      <div class = "filterbox">
+        <div class = "topalign">
+          <h2 class = "titleClass">Filters</h2>
+          <button class = "buttonClass">Hide Filters </button>
+        </div>
+        <div class = "selecttypes">
+          <h4>By Name</h4>
+          <input class = "schoolname"></input>
+          <h4>By Grade</h4>
+          <select>
+            <option value="AllGrades">All Grades</option>
+          </select>
+        </div>
+      </div>
+      <div class="schoolsList">
+        <h2>Schools</h2>
+        <div class= "schoolBlock">
+          <p class="school">Henry, Charles W.</p>
+          <p class="schoolType">Elem/Middle</p>
+          <p class="address">601 Carpenter Lane</p>
+          <p class="address">19119-3405</p>
+        </div>
+        <div class= "schoolBlock">
+          <p class="school">Universal Creighton Charter School</p>
+          <p class="schoolType">Elem/Middle</p>
+          <p class="address">5401 Tabor Ave</p>
+          <p class="address">19120-3614</p>
+        </div>
+        <div class= "schoolBlock">
+          <p class="school">Marshall, John</p>
+          <p class="schoolType">Elementary School</p>
+        </div>
+      </div>
     </div>
     <!-- Map -->
     <div id="map" class="map"></div>
