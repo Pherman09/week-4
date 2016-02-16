@@ -41,7 +41,7 @@ var resetMap = function() {
 var getAndParseData = function() {
   $.ajax("https://raw.githubusercontent.com/CPLN690-MUSA610/datasets/master/json/philadelphia-bike-crashes-snippet.json").done(function(result){
     var jsOB = JSON.parse(result);
-    return jsOB;
+    myData = jsOB;
     });
 };
 
@@ -50,11 +50,10 @@ var getAndParseData = function() {
   criteria happens to be — that's entirely up to you)
 ===================== */
 var plotData = function() {
-  var obs = getAndParseData();
-  _.filter(obs, function(ob){
+  myData = _.filter(myData, function(ob){
     return ob.ILLUMINATI > numericField1;
   });
-  _.each (obs, function(ob){
+  _.each (myData, function(ob){
     var lat = ob.LAT;
     var lng = ob.LNG;
     myMarkers.push(L.marker([lat, lng]));
